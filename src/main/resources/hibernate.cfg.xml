@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  ~
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  -->
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="connection.url">jdbc:postgresql://localhost:5432/postgres</property>
+        <property name="connection.username">postgres</property>
+        <property name="connection.password">123456</property>
+
+
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">1</property>
+
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.PostgreSQL95Dialect</property>
+
+        <!-- Disable the second-level cache  -->
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.internal.EhcacheRegionFactory</property>
+        <property name="hibernate.cache.use_query_cache">true</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+
+        <!-- create -Drop and re-create the database schema on startup
+             update - Hibernate checks for the table and columns. If a table doesn’t exist then it creates new tables and where as if a column doesn’t exist it creates new columns for it
+             validate - hibernate only validates the table structure- whether the table and columns have existed or not. If the table doesn’t exist then hibernate throws an exception.
+             create-drop - Hibernate first checks for a table and do the necessary operations and finally drops the table after all the operations were completed The value “create-drop” is given for unit testing the hibernate code
+        -->
+        <property name="hbm2ddl.auto">create</property>
+
+        <!-- Names the annotated entity class -->
+        <mapping class="com.vishwas.learning.hibernate.tutorial.dto.UserDetails"/>
+        <mapping class="com.vishwas.learning.hibernate.tutorial.dto.UserDetailWithCollection"/>
+        <mapping class="com.vishwas.learning.hibernate.tutorial.dto.User"/>
+        <mapping class="com.vishwas.learning.hibernate.tutorial.dto.Vehicle"/>
+        <mapping class="com.vishwas.learning.hibernate.tutorial.dto.Book"/>
+        <mapping class="com.vishwas.learning.hibernate.tutorial.dto.RentalVehicle"/>
+        <mapping class="com.vishwas.learning.hibernate.tutorial.C_inheritance.FourWheeler"/>
+        <mapping class="com.vishwas.learning.hibernate.tutorial.C_inheritance.TwoWheeler"/>
+        <mapping class="com.vishwas.learning.hibernate.tutorial.C_inheritance.VehicleInheritance"/>
+        <mapping class="com.vishwas.learning.hibernate.tutorial.B_entityobjectstates.BasicUserDetailEntity"/>
+
+
+
+    </session-factory>
+
+</hibernate-configuration>
